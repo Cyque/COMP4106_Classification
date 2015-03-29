@@ -38,15 +38,19 @@ namespace COMP4106_Assignment3.Classification
             {
                 foreach (DependenceNode lowestNode in lowestLayer)
                 {
-                    for (int i = 0; i < maxNodeChildren && size > 0; i++)
+                    int randomNodes = rndGen.Next(0, maxNodeChildren);
+                    for (int i = 0; i < randomNodes && size > 0; i++)
                     {
                         newLayer.Add(new DependenceNode(lowestNode, rndGen.NextDouble(), rndGen.NextDouble(), "n" + nameIndex));
                         size--;
                         nameIndex++;
                     }
                 }
-                lowestLayer = newLayer;
-                newLayer = new List<DependenceNode>();
+                if (newLayer.Count > 0)
+                {
+                    lowestLayer = newLayer;
+                    newLayer = new List<DependenceNode>();
+                }
             }
 
 

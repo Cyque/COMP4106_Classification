@@ -51,20 +51,9 @@ namespace COMP4106_Assignment3
             }
 
 
-            //validation for class 0
-            FoldValidation validation = new FoldValidation(generatedData[0], 8);
-
-            validation.runClassification(0);
-
-
-
-
-
-            //System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
-
-            //for (int i = 0; i < generatedData.Count; i++)
-            //    for (int j = 0; j < generatedData[i].Count; j++)
-            //        file.WriteLine(generatedData[i][j].ToStringFlat());
+            MultiClassValidation validator = new MultiClassValidation(0);
+            validator.runFullClassification(generatedData, 8);
+            validator.runFullTests(generatedData);
 
 
 

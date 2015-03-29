@@ -14,6 +14,8 @@ namespace COMP4106_Assignment3.Classification.Fold
 
         int maxFolds;
 
+        public Classification.Classification conclusion;
+
 
         public FoldValidation(List<ClassInstance> samples, int maxFolds)
         {
@@ -36,7 +38,7 @@ namespace COMP4106_Assignment3.Classification.Fold
         }
 
 
-        public void runClassification(int classificationType)
+        public Classification.Classification runClassification(int classificationType)
         {
             Classification.Classification[] folds = new Classification.Classification[maxFolds]; //one classification per fold
             if (classificationType == 0)
@@ -58,6 +60,8 @@ namespace COMP4106_Assignment3.Classification.Fold
             //average the classifications
 
             Classification.Classification conclusion = folds[0].average(folds);
+            this.conclusion = conclusion;
+            return conclusion;
         }
 
 
