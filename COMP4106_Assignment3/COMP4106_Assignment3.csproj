@@ -46,8 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classification\DecisionNode.cs" />
-    <Compile Include="Classification\FeatureClass.cs" />
+    <Compile Include="Classification\DependenceNode.cs" />
+    <Compile Include="Classification\ClassInstance.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,0 +1,7 @@
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.MainForm.resources
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.Properties.Resources.resources
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.csproj.GenerateResource.Cache
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\bin\Release\COMP4106_Assignment3.exe
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\bin\Release\COMP4106_Assignment3.pdb
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.exe
+C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.pdb
