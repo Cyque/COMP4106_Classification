@@ -5,3 +5,10 @@ C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classif
 C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\bin\Release\COMP4106_Assignment3.pdb
 C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.exe
 C:\Users\Cyque\School\Carleton Winter 2015\COMP4106_Assignment3\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.pdb
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.MainForm.resources
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.Properties.Resources.resources
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.csproj.GenerateResource.Cache
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.exe
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Release\COMP4106_Assignment3.pdb
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\bin\Release\COMP4106_Assignment3.exe
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\bin\Release\COMP4106_Assignment3.pdb

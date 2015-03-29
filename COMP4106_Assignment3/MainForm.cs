@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using COMP4106_Assignment3.Classification;
+using COMP4106_Assignment3.Classification.Classification;
+using COMP4106_Assignment3.Classification.Fold;
 
 namespace COMP4106_Assignment3
 {
@@ -17,6 +19,7 @@ namespace COMP4106_Assignment3
 
         public MainForm()
         {
+            
             InitializeComponent();
         }
 
@@ -48,12 +51,20 @@ namespace COMP4106_Assignment3
             }
 
 
+            //validation for class 0
+            FoldValidation validation = new FoldValidation(generatedData[0], 8);
 
-            System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
+            validation.runClassification(0);
 
-            for (int i = 0; i < generatedData.Count; i++)
-                for (int j = 0; j < generatedData[i].Count; j++)
-                    file.WriteLine(generatedData[i][j].ToStringFlat());
+
+
+
+
+            //System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
+
+            //for (int i = 0; i < generatedData.Count; i++)
+            //    for (int j = 0; j < generatedData[i].Count; j++)
+            //        file.WriteLine(generatedData[i][j].ToStringFlat());
 
 
 
