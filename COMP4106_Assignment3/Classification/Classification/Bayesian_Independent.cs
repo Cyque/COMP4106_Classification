@@ -11,7 +11,7 @@ namespace COMP4106_Assignment3.Classification.Classification
     public class Bayesian_Independent : Classification
     {
 
-        Dictionary<String, double> featureProbabilities;
+        protected Dictionary<String, double> featureProbabilities;
 
         public Bayesian_Independent()
         {
@@ -37,7 +37,6 @@ namespace COMP4106_Assignment3.Classification.Classification
                     }
                 }
             }
-
 
             featureProbabilities = new Dictionary<string, double>();
             foreach (KeyValuePair<string, int> featureN in featureCounts) //each feature

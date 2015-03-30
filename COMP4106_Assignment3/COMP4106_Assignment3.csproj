@@ -50,6 +50,7 @@
     <Compile Include="Classification\Classification\Bayesian_Independent.cs" />
     <Compile Include="Classification\Classification\Classification.cs" />
     <Compile Include="Classification\Classification\DecisionTree_Classification.cs" />
+    <Compile Include="Classification\Classification\Dependent\SingleDependeceNode.cs" />
     <Compile Include="Classification\DependenceNode.cs" />
     <Compile Include="Classification\ClassInstance.cs" />
     <Compile Include="Classification\Fold\FoldValidation.cs" />
@@ -84,6 +85,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

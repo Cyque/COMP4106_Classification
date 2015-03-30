@@ -9,7 +9,7 @@ namespace COMP4106_Assignment3.Classification.Fold
     public class FoldValidation
     {
         List<ClassInstance> samples;
-        List<ClassInstance> samples_testing;
+        public List<ClassInstance> samples_testing;
         List<ClassInstance> samples_training;
 
         int maxFolds;
@@ -45,6 +45,11 @@ namespace COMP4106_Assignment3.Classification.Fold
             {
                 for (int i = 0; i < folds.Length; i++)
                     folds[i] = new Bayesian_Independent();
+            }
+            else if (classificationType == 1)
+            {
+                for (int i = 0; i < folds.Length; i++)
+                    folds[i] = new Bayesian_Dependent();
             }
 
 

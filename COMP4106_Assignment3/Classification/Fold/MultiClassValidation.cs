@@ -31,8 +31,6 @@ namespace COMP4106_Assignment3.Classification.Fold
 
         public void runFullTests(List<List<ClassInstance>> testSamples)
         {
-
-
             int totalCorrect = 0;
             int total = 0;
 
@@ -40,12 +38,12 @@ namespace COMP4106_Assignment3.Classification.Fold
             int totalSamples = 0;
             for (int i = 0; i < testSamples.Count; i++)
                 totalSamples += testSamples[i].Count;
-
+            
 
             for (int classIndex = 0; classIndex < testSamples.Count; classIndex++)
             {
                 foreach (ClassInstance sample in testSamples[classIndex])
-                {//for every sample
+                {   //for every sample
 
                     int chosenClass = -1;
                     double highestScore = double.MinValue;

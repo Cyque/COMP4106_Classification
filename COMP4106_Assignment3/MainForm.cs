@@ -51,7 +51,7 @@ namespace COMP4106_Assignment3
             }
 
 
-            MultiClassValidation validator = new MultiClassValidation(0);
+            MultiClassValidation validator = new MultiClassValidation(1);
             validator.runFullClassification(generatedData, 8);
             validator.runFullTests(generatedData);
 
