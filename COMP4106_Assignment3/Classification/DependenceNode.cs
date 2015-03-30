@@ -18,6 +18,50 @@ namespace COMP4106_Assignment3.Classification
         double p_p1;
         double p_p0;
 
+        public DependenceNode getNodeWithFeatureName(string featureName)
+        {
+            if (this.featureName.Equals(featureName))
+                return this;
+            else
+            {
+                for (int i = 0; i < children.Count; i++)
+                {
+                    DependenceNode n = children[i].getNodeWithFeatureName(featureName);
+                    if (n != null)
+                        return n;
+                }
+                return null;
+            }
+
+        }
+
+        public double evaluate(ClassInstance sample)
+        {
+            double value = 1;
+
+            if (parent != null)
+            {
+                if (sample.features[parent.featureName].Equals(1)) //parent == 1
+                {
+                    if (sample.features[featureName].Equals(1)) //this == 1
+                        value = p_p1;
+                    else
+                        value = (1 - p_p1);
+                }
+                else //parent == 0
+                {
+                    if (sample.features[featureName].Equals(1)) //this == 1
+                        value = p_p0;
+                    else
+                        value = (1 - p_p0);
+                }
+            }
+
+            for (int i = 0; i < children.Count; i++)            
+                value *= children[i].evaluate(sample);
+
+            return value;
+        }
 
 
         public static DependenceNode generateRandomTree(int size, int maxNodeChildren = 3)

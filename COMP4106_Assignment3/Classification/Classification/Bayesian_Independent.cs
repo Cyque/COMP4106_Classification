@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace COMP4106_Assignment3.Classification.Classification
 {
     //http://en.wikipedia.org/wiki/Naive_Bayes_classifier

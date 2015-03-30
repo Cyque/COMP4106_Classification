@@ -11,9 +11,9 @@ namespace COMP4106_Assignment3.Classification.Classification
 
         //base.featureProbablities
 
-        SingleDependeceNode classDependenceTree;
-        Dictionary<string, double> weightedGraph;
-
+        DependenceNode4 classDependenceTree;
+        Dictionary<string, Tuple<double, double[]>> weightedGraph;
+        List<string> featureNames;
 
         public Bayesian_Dependent()
         {
@@ -22,11 +22,10 @@ namespace COMP4106_Assignment3.Classification.Classification
 
         public override void train(List<ClassInstance> trainingSet)
         {
-            List<string> featureNames = new List<string>();
+            featureNames = new List<string>();
             foreach (KeyValuePair<string, int> sampleFeature in trainingSet[0].features)
-            {
                 featureNames.Add(sampleFeature.Key);
-            }
+
 
             //@@@ generate independent probabilities
             base.train(trainingSet);
@@ -34,7 +33,7 @@ namespace COMP4106_Assignment3.Classification.Classification
             //@@@ create fully connected, weighted, undirected graph
 
             //key format: <string>(featureName-i:featureName-j) = <double>(weight/EMIM)
-            weightedGraph = new Dictionary<string, double>();
+            weightedGraph = new Dictionary<string, Tuple<double, double[]>>();
 
             foreach (string featureName1 in featureNames)
                 foreach (string featureName2 in featureNames)
@@ -72,46 +71,49 @@ namespace COMP4106_Assignment3.Classification.Classification
                         weightEMIM += Pr_10 * (Pr_1x0 == 0 ? 0 : Math.Log(Pr_10 / Pr_1x0));
                         weightEMIM += Pr_11 * (Pr_1x1 == 0 ? 0 : Math.Log(Pr_11 / Pr_1x1));
 
-                        weightedGraph.Add(featureName1 + ":" + featureName2, weightEMIM);
+                        weightedGraph.Add(featureName1 + ":" + featureName2,
+                            new Tuple<double, double[]>(weightEMIM, new double[] { Pr_00, Pr_01, Pr_10, Pr_11 }));
                     }
 
 
 
             //@@@ compute maximim spanning tree
 
-            makeMaxSpanTree(featureNames);
-
+            makeMaxSpanTree();
             //Console.WriteLine(classDependenceTree.ToString());
         }
 
-        private void makeMaxSpanTree(List<string> featureNames)
+        private void makeMaxSpanTree()
         {
             //featureNames
             //n0 will be graph head
-            List<string> featuresTodo = featureNames;
+            List<string> featuresTodo = new List<string>();
+            foreach (string s in featureNames)
+                featuresTodo.Add(s);
+
             List<string> featuresDone = new List<string>();
             featuresTodo.Remove("n0");
             featuresDone.Add("n0");
-            classDependenceTree = new SingleDependeceNode(null, 0, "n0");
+            classDependenceTree = new DependenceNode4(null, 0.5d, 0.5d, 0.5d, 0.5d, "n0");
 
 
             //  A  B     BCD,  A
             //  C  D
 
-            while (featureNames.Count > 0) //while features remain
+            while (featuresTodo.Count > 0) //while features remain
             {
-                double bestValue = double.MinValue;
+                Tuple<double, double[]> bestValue = null;
                 string bestFeatureName = "";
                 string bestFeatureComesFrom = "";
 
                 foreach (string feature1 in featuresDone)
                     foreach (string feature2 in featuresTodo)
                     {
-                        double weightEMIM;
+                        Tuple<double, double[]> weightEMIM;
                         if (weightedGraph.ContainsKey(feature1 + ":" + feature2)) weightEMIM = weightedGraph[feature1 + ":" + feature2];
                         else weightEMIM = weightedGraph[feature2 + ":" + feature1];
 
-                        if (weightEMIM > bestValue)
+                        if (bestValue == null || weightEMIM.Item1 > bestValue.Item1)
                         {
                             bestValue = weightEMIM;
                             bestFeatureName = feature2;
@@ -119,9 +121,15 @@ namespace COMP4106_Assignment3.Classification.Classification
                         }
                     }
 
+                    
 
-                SingleDependeceNode parent = classDependenceTree.getNodeWithFeatureName(bestFeatureComesFrom);
-                new SingleDependeceNode(parent, bestValue, bestFeatureName);
+                DependenceNode4 parent = classDependenceTree.getNodeWithFeatureName(bestFeatureComesFrom);
+                new DependenceNode4(parent,
+                    ((double[])bestValue.Item2)[1], //01
+                    ((double[])bestValue.Item2)[3], //11 
+                    ((double[])bestValue.Item2)[0], //00
+                    ((double[])bestValue.Item2)[2], //10
+                    bestFeatureName);
 
                 featuresTodo.Remove(bestFeatureName);
                 featuresDone.Add(bestFeatureName);
@@ -140,20 +148,36 @@ namespace COMP4106_Assignment3.Classification.Classification
             Bayesian_Dependent[] listN = Array.ConvertAll(list, item => (Bayesian_Dependent)item);
             Bayesian_Dependent first = (Bayesian_Dependent)list[0];
 
-            List<string> features = new List<string>(first.weightedGraph.Keys);
-            for (int i = 0; i < listN.Length; i++)
+            List<string> featuresWe = new List<string>(first.weightedGraph.Keys);
+            for (int i = 1; i < listN.Length; i++)
             {
-                for (int j = 0; j < features.Count; j++)
+                for (int j = 0; j < featuresWe.Count; j++)
                 {
-                    first.weightedGraph[features[j]] += listN[i].weightedGraph[features[j]];
+                    double[] newPrs = new double[first.weightedGraph[featuresWe[j]].Item2.Length];
+                    for (int l = 0; l < newPrs.Length; l++)
+                        newPrs[l] = first.weightedGraph[featuresWe[j]].Item2[l] + listN[i].weightedGraph[featuresWe[j]].Item2[l];
+
+                    Tuple<double, double[]> newS = new Tuple<double, double[]>(first.weightedGraph[featuresWe[j]].Item1 + listN[i].weightedGraph[featuresWe[j]].Item1, newPrs);
+
+                    first.weightedGraph[featuresWe[j]] = newS;
+
+                    // first.weightedGraph[features[j]]. += listN[i].weightedGraph[features[j]];
                 }
             }
 
+            for (int j = 0; j < featuresWe.Count; j++)
+            {
+                double[] newPrs = new double[first.weightedGraph[featuresWe[j]].Item2.Length];
+                for (int i = 0; i < newPrs.Length; i++)
+                    newPrs[i] = first.weightedGraph[featuresWe[j]].Item2[i] / (double)listN.Length;
 
-            for (int j = 0; j < features.Count; j++)
-                first.weightedGraph[features[j]] /= (double)listN.Length;
+                Tuple<double, double[]> newS = new Tuple<double, double[]>(first.weightedGraph[featuresWe[j]].Item1 / (double)listN.Length, newPrs);
+                first.weightedGraph[featuresWe[j]] = newS;
+            }
 
 
+            first.makeMaxSpanTree();
+            //Console.WriteLine(first.classDependenceTree);
             return first;
         }
     }

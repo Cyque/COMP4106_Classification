@@ -59,7 +59,7 @@ namespace COMP4106_Assignment3.Classification.Fold
                 setFold(i);
                 folds[i].train(samples_training); //train for each fold
 
-                folds[i].test(samples_testing);
+              //  folds[i].test(samples_testing);
             }
 
             //average the classifications

@@ -38,8 +38,8 @@ namespace COMP4106_Assignment3
             for (int i = 0; i < (int)nudClasses.Value; i++)
             {
                 classes.Add(DependenceNode.generateRandomTree((int)nudFeatures.Value));
-                Console.WriteLine("Class " + i + ":");
-                Console.WriteLine(classes[i].ToString());
+                //Console.WriteLine("Class " + i + ":");
+                //Console.WriteLine(classes[i].ToString());
 
 
                 //create the data for this class:
@@ -50,12 +50,15 @@ namespace COMP4106_Assignment3
                 generatedData.Add(classData);
             }
 
+            MultiClassValidation validator;
 
-            MultiClassValidation validator = new MultiClassValidation(1);
+            validator = new MultiClassValidation(0);
             validator.runFullClassification(generatedData, 8);
             validator.runFullTests(generatedData);
 
-
+            validator = new MultiClassValidation(1);
+            validator.runFullClassification(generatedData, 8);
+            validator.runFullTests(generatedData);
 
         }
     }
