@@ -50,6 +50,7 @@
     <Compile Include="Classification\Classification\Bayesian_Independent.cs" />
     <Compile Include="Classification\Classification\Classification.cs" />
     <Compile Include="Classification\Classification\DecisionTree_Classification.cs" />
+    <Compile Include="Classification\Classification\DecTree\DecisionNode.cs" />
     <Compile Include="Classification\Classification\Dependent\DependenceNode4.cs" />
     <Compile Include="Classification\DependenceNode.cs" />
     <Compile Include="Classification\ClassInstance.cs" />

@@ -19,3 +19,4 @@ Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\bin\
 Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Debug\COMP4106_Assignment3.MainForm.resources
 Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Debug\COMP4106_Assignment3.Properties.Resources.resources
 Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Debug\COMP4106_Assignment3.csproj.GenerateResource.Cache
+Z:\Users\Cyque\School\COMP4106\COMP4106_Classification\COMP4106_Assignment3\obj\x86\Debug\COMP4106_Assignment3.csprojResolveAssemblyReference.cache

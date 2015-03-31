@@ -50,15 +50,20 @@ namespace COMP4106_Assignment3
                 generatedData.Add(classData);
             }
 
-            MultiClassValidation validator;
+           // MultiClassValidation validator;
 
-            validator = new MultiClassValidation(0);
-            validator.runFullClassification(generatedData, 8);
-            validator.runFullTests(generatedData);
+            //validator = new MultiClassValidation(0);
+            //validator.runFullClassification(generatedData, 8);
+            //validator.runFullTests(generatedData);
 
-            validator = new MultiClassValidation(1);
-            validator.runFullClassification(generatedData, 8);
-            validator.runFullTests(generatedData);
+            //validator = new MultiClassValidation(1);
+            //validator.runFullClassification(generatedData, 8);
+            //validator.runFullTests(generatedData);
+
+
+            DecisionTree_Classification DTC = new DecisionTree_Classification(generatedData);
+            DTC.train();
+            DTC.test();
 
         }
     }
