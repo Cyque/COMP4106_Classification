@@ -92,8 +92,17 @@ namespace COMP4106_Assignment3.Classification.Classification
                 featuresTodo.Add(s);
 
             List<string> featuresDone = new List<string>();
-            featuresTodo.Remove("n0");
-            featuresDone.Add("n0");
+            if (featuresTodo.Contains("n0"))
+            {
+                featuresTodo.Remove("n0");
+                featuresDone.Add("n0");
+            }
+            else
+            {
+                string firstF = featuresTodo[0];
+                featuresTodo.Remove(firstF);
+                featuresDone.Add(firstF);
+            }
             classDependenceTree = new DependenceNode4(null, 0.5d, 0.5d, 0.5d, 0.5d, "n0");
 
 
@@ -121,7 +130,7 @@ namespace COMP4106_Assignment3.Classification.Classification
                         }
                     }
 
-                    
+
 
                 DependenceNode4 parent = classDependenceTree.getNodeWithFeatureName(bestFeatureComesFrom);
                 new DependenceNode4(parent,

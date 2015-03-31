@@ -170,7 +170,11 @@ namespace COMP4106_Assignment3.Classification.Classification
 
             root.finalizeTree();
             rootTree = root;
-            Console.WriteLine(root);
+
+
+
+            //@@@@@@@@@@@@@@@@@@@@@
+            //Console.WriteLine(root);
 
         }
 
@@ -241,7 +245,7 @@ namespace COMP4106_Assignment3.Classification.Classification
                 }
             }
 
-            Console.WriteLine("Test for classification type " + 3 + ".");
+            Console.WriteLine("Test for classification type " + 2 + ".");
             Console.WriteLine("\tResults:");
             Console.WriteLine("\t\tCorrect/Incorrect: " + totalCorrect + "/" + total);
             Console.WriteLine("\t\tPercentage: " + ((double)totalCorrect / (double)total));

@@ -25,10 +25,13 @@ namespace COMP4106_Assignment3.Classification.Fold
 
         private void setFold(int foldIndex)
         {
-            int trainingSize = samples.Count * (maxFolds - 1) / maxFolds;
-            int testingSize = samples.Count - trainingSize;
+            int testingSize = (int) Math.Floor((double) samples.Count / (double)maxFolds);
+            int trainingSize = samples.Count - testingSize;
 
-
+            //if (trainingSize + testingSize > samples.Count)
+            //{
+            //    trainingSize -= samples.Count - trainingSize;
+            //}
 
             samples_testing = samples.GetRange(foldIndex * testingSize, testingSize);
 

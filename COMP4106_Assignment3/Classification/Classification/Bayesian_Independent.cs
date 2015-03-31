@@ -26,6 +26,9 @@ namespace COMP4106_Assignment3.Classification.Classification
             {
                 foreach (KeyValuePair<string, int> sampleFeature in sample.features) //each feature
                 {
+                    if (!featureCounts.ContainsKey(sampleFeature.Key)) 
+                        featureCounts[sampleFeature.Key] = 0;
+
                     // add 1 to featureCount[featureName] if sampleFeature == 1
                     if (sampleFeature.Value == 1)
                     {
